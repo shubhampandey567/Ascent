@@ -75,7 +75,7 @@ On paper: the forward and backward pass of a tiny 2-layer network for one exampl
 - **Quiz seeds:** What happens if you forget to zero the gradients? Write the 4 steps of a training loop.
 
 #### P5-W2-B · Weekend build
-Extend your micrograd with `pow`, `exp` and `ReLU`, and write pytest tests comparing your gradients with PyTorch on 5 expressions. This becomes Project 5A.
+Extend your micrograd with `pow`, `exp` and `ReLU`, and write pytest tests comparing your gradients with PyTorch on 5 expressions. Check your gradient accumulation logic with `python scripts/verify_build.py autograd`. This becomes Project 5A.
 
 ---
 

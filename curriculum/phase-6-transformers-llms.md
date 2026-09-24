@@ -53,7 +53,7 @@ A reality check from 2026 job postings: fine-tuning is the *main* job in only ab
 - **Build:** Finish the course's remaining lessons over the weekend if time allows.
 
 #### P6-W1-B · Weekend build
-Implement a single causal self-attention head in PyTorch (`nn.Linear` for Q, K, V; mask with `torch.tril`). Compare your output with `torch.nn.functional.scaled_dot_product_attention(..., is_causal=True)` on random input; they should match to about 1e-6.
+Implement a single causal self-attention head in PyTorch (`nn.Linear` for Q, K, V; mask with `torch.tril`). Compare your output with `torch.nn.functional.scaled_dot_product_attention(..., is_causal=True)` on random input (should match to about 1e-6), and check normalization and causal mask properties with `python scripts/verify_build.py attention`.
 
 ---
 
@@ -109,7 +109,7 @@ Train your GPT on a different corpus of your choice (for example a public-domain
 - **Build:** Fine-tune a small BERT-style model on a sentiment or topic dataset; report accuracy and F1.
 
 #### P6-W3-B · Weekend build
-Train a small BPE tokenizer on 1–2 MB of text you choose (your own code, or `minbpe` as reference). Then compare token counts for the same 10 sentences in English and another language you know using [tiktoken](https://github.com/openai/tiktoken) and your tokenizer. Write a short "why my language costs more tokens" note with numbers. A good blog post.
+Train a small BPE tokenizer on 1–2 MB of text you choose (your own code, or `minbpe` as reference). Check UTF-8 byte boundary preservation and merge mechanics with `python scripts/verify_build.py bpe`. Then compare token counts for the same 10 sentences in English and another language you know using [tiktoken](https://github.com/openai/tiktoken) and your tokenizer. Write a short "why my language costs more tokens" note with numbers. A good blog post.
 
 ---
 
@@ -126,11 +126,11 @@ Train a small BPE tokenizer on 1–2 MB of text you choose (your own code, or `m
 - **Key concepts:** supervised fine-tuning on instruction–response pairs; reward model from human preferences; RLHF; DPO as a simpler alternative that needs no separate reward model; why chat models refuse, follow formats and sometimes flatter.
 - **Quiz seeds:** Explain the 3 steps in InstructGPT's Figure 2. What does DPO remove from the RLHF pipeline?
 
-#### P6-W4-L3 · Reasoning models (~75 min)
+#### P6-W4-L3 · Reasoning models and RL (~75 min)
 - **Learn:** read [The Illustrated DeepSeek-R1](https://newsletter.languagemodels.co/p/the-illustrated-deepseek-r1) and the abstract of [DeepSeek-R1](https://arxiv.org/abs/2501.12948).
-- **Optional:** [DeepLearning.AI — Reinforcement Fine-Tuning LLMs With GRPO](https://www.deeplearning.ai/courses/reinforcement-fine-tuning-llms-grpo)
-- **Key concepts:** chain-of-thought; reinforcement learning with verifiable rewards (math, code); GRPO; "thinking tokens" and test-time compute; distilling reasoning into small models.
-- **Quiz seeds:** Why do rewards for math and code tasks work well for RL? Why do reasoning models cost more per answer?
+- **Alt / deeper:** [DeepLearning.AI — Reinforcement Fine-Tuning LLMs With GRPO](https://www.deeplearning.ai/courses/reinforcement-fine-tuning-llms-grpo) and [Hugging Face — A Gentle Introduction to GRPO](https://huggingface.co/blog/grpo).
+- **Key concepts:** chain-of-thought and test-time compute (spending more inference tokens on backtracking and self-correction); reinforcement learning with verifiable rule-based rewards (math solutions, unit tests); GRPO (Group Relative Policy Optimization: eliminates the separate critic/value network by sampling a group of outputs per prompt and normalizing against the group mean); Outcome Reward Models (ORMs) vs Process Reward Models (PRMs / step-level verification); distilling reasoning capabilities into small models.
+- **Quiz seeds:** How does GRPO calculate advantage without training a separate critic network? Why do verifiable domains like math and code work better for RL than creative writing? What is the difference between an ORM and a PRM?
 
 #### P6-W4-L4 · How to read a paper (~60 min)
 - **Learn:** [S. Keshav — How to Read a Paper](https://web.stanford.edu/class/ee384m/Handouts/HowtoReadPaper.pdf) (3 pages). Then do a *first pass* (title, abstract, headings, figures, conclusion) of [Attention Is All You Need](https://arxiv.org/abs/1706.03762).
@@ -144,11 +144,11 @@ Read and run Karpathy's [microgpt](https://karpathy.github.io/2026/02/12/microgp
 
 ## Week 5 (plan week 41) — Inference and efficiency
 
-#### P6-W5-L1 · Decoding and the KV cache (~75 min)
-- **Learn:** [Umar Jamil — LLaMA explained: KV-Cache, Rotary Positional Embedding, RMS Norm, Grouped Query Attention, SwiGLU](https://www.youtube.com/watch?v=Mn_9W1nCFLo), the KV-cache section (use the chapter list).
-- **Key concepts:** greedy vs sampling; temperature, top-k and top-p; repetition; the KV cache (reuse past keys and values instead of recomputing them); why the first token is slow and the rest are faster.
-- **Quiz seeds:** What exactly is stored in the KV cache? Why does top-p adapt better than top-k?
-- **Build:** Add temperature, top-k and top-p sampling to your Week 2 GPT and compare outputs.
+#### P6-W5-L1 · Modern decoding: KV cache, RoPE, and GQA (~75 min)
+- **Learn:** [Umar Jamil — LLaMA explained: KV-Cache, Rotary Positional Embedding, RMS Norm, Grouped Query Attention, SwiGLU](https://www.youtube.com/watch?v=Mn_9W1nCFLo) (chapters on KV-Cache, RoPE, RMSNorm, and GQA).
+- **Key concepts:** greedy vs sampling (temperature, top-k, top-p); the KV cache (reusing past Key and Value matrices to avoid $O(T^2)$ recomputation at inference; why generation is autoregressive); **Rotary Positional Embeddings (RoPE)** (rotating query and key vector 2D slices by angles proportional to token position; encodes relative distance naturally without fixed context limits); **Grouped-Query Attention (GQA)** vs Multi-Head Attention (MHA) and Multi-Query Attention (MQA) (multiple query heads share one key/value head, reducing KV cache memory by $4\times$ to $8\times$ with near-zero quality loss); RMSNorm vs LayerNorm.
+- **Quiz seeds:** What tensors are stored in the KV cache, and how does memory grow with batch size, context length, and layer count? Why does GQA save massive VRAM during serving compared to standard MHA? How does RoPE inject positional awareness without absolute position embeddings?
+- **Build:** Add temperature, top-k and top-p sampling to your Week 2 GPT. Calculate the KV cache size in GB for a 7B model (32 layers, 32 heads, hidden dim 4096, fp16) for 4096 tokens under MHA vs GQA (8 KV heads).
 
 #### P6-W5-L2 · Quantization (~60 min)
 - **Learn:** [DeepLearning.AI — Quantization Fundamentals with Hugging Face](https://www.deeplearning.ai/courses/quantization-fundamentals) (7 short videos).
@@ -156,15 +156,15 @@ Read and run Karpathy's [microgpt](https://karpathy.github.io/2026/02/12/microgp
 - **Key concepts:** fp32, fp16, bf16, int8, int4; memory ≈ parameters × bytes per parameter; GGUF files for llama.cpp and Ollama; the accuracy vs memory trade-off.
 - **Quiz seeds:** Roughly how much RAM do a 3B model's weights need in fp16 and in 4-bit? Why can your 8 GB laptop run a 3B model in 4-bit but not in fp16?
 
-#### P6-W5-L3 · Serving LLMs (~60 min)
-- **Learn:** [DeepLearning.AI — Efficiently Serving LLMs](https://www.deeplearning.ai/courses/efficiently-serving-llms) (8 short videos).
-- **Key concepts:** batching and continuous batching; throughput vs latency; serving many LoRA adapters on one base model; what vLLM and llama.cpp do.
-- **Quiz seeds:** Why does batching raise throughput but can raise latency? When would you serve one base model with many LoRA adapters?
+#### P6-W5-L3 · Serving LLMs & FlashAttention (~75 min)
+- **Learn:** [DeepLearning.AI — Efficiently Serving LLMs](https://www.deeplearning.ai/courses/efficiently-serving-llms) (8 short videos), and read the abstract and Figure 1 of [FlashAttention](https://arxiv.org/abs/2205.14135).
+- **Key concepts:** batching and continuous batching (iteration-level scheduling); throughput vs latency; **FlashAttention & I/O awareness** (GPU fast on-chip SRAM vs slow High-Bandwidth Memory HBM; tiling softmax and attention to avoid materializing the $N \times N$ attention matrix in HBM; memory bandwidth bound vs compute bound); vLLM and PagedAttention (managing KV cache non-contiguously like virtual memory pages to eliminate fragmentation); serving multiple LoRA adapters on a single base engine.
+- **Quiz seeds:** Why is standard self-attention memory-bandwidth bound rather than compute bound on modern GPUs? How does PagedAttention eliminate memory waste in KV caches? Why does continuous batching outperform static batching?
 
 #### P6-W5-L4 · Architecture tour: MoE, long context, images (~60 min)
 - **Learn:** [Umar Jamil — Mistral / Mixtral explained](https://www.youtube.com/watch?v=UiX8K-xBUpE) (mixture-of-experts section), then [3Blue1Brown × Welch Labs — But how do AI images and videos actually work?](https://www.youtube.com/watch?v=iv-5mZ_9CPY)
-- **Key concepts:** mixture of experts (only some parameters active per token); sliding-window attention; rotary position embeddings for long context; diffusion models for images; vision-language models turn images into tokens.
-- **Quiz seeds:** Why can a mixture-of-experts model be big but cheap per token? How does a diffusion model generate an image, in 3 sentences?
+- **Key concepts:** Mixture of Experts (MoE: router/gating network chooses top-k expert FFNs per token; high total parameter capacity with low active FLOPs per token; load balancing loss); sliding-window attention; rotary position embeddings for long context; diffusion models for images; vision-language models turn images into tokens.
+- **Quiz seeds:** Why can a mixture-of-experts model have 47B parameters but run at the speed of a 13B model? What does the router network do, and why is load balancing necessary? How does a diffusion model generate an image, in 3 sentences?
 
 #### P6-W5-B · Weekend build: benchmark your laptop
 With [Ollama](https://ollama.com), run 2 small models (1–4B) in 2 quantizations each. For each, measure tokens per second, RAM used (Task Manager) and quality on the same 10 prompts (your own 1–5 score). Put the results in a table with a recommendation. You now know exactly what your hardware can do.

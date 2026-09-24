@@ -144,12 +144,13 @@ Finish the tracker MCP server: read-only tools plus one write tool behind a conf
 
 #### P7-W5-L2 · LLM-as-judge, done properly (~75 min)
 - **Learn:** Hamel Husain, [Using LLM-as-a-Judge](https://hamel.dev/blog/posts/llm-judge/) and his [evals FAQ](https://hamel.dev/blog/posts/evals-faq/).
-- **Key concepts:** binary pass/fail judgments beat 1–10 scales; writing a judge prompt with examples; measuring agreement between the judge and your own labels before trusting it; judge biases (position, verbosity, self-preference).
-- **Quiz seeds:** Your judge agrees with you 60% of the time. What do you do?
+- **Key concepts:** binary pass/fail criteria beat 1–10 subjective scales; writing a clear judge rubric with few-shot positive and negative edge cases; measuring Cohen's Kappa / agreement rate between the LLM judge and your human labels before trusting it; mitigating judge biases (position bias, verbosity bias, self-enhancement bias, and sycophancy).
+- **Quiz seeds:** Your judge agrees with human labels only 60% of the time. What are 3 concrete fixes to calibrate it? Why is binary criteria superior to 1–5 scoring for automated regression gates?
 
-#### P7-W5-L3 · Evaluating agents (~75 min)
+#### P7-W5-L3 · Evaluating agents and trajectories (~75 min)
 - **Learn:** [DeepLearning.AI — Evaluating AI Agents](https://www.deeplearning.ai/courses/evaluating-ai-agents) (15 short videos).
-- **Key concepts:** final-answer evals vs trajectory evals (did it take sensible steps?); tool-selection accuracy; step count and cost; regression tests for agents.
+- **Key concepts:** final-outcome evals vs trajectory evals (inspecting intermediate tool calls, argument validity, and sequence efficiency); tool-selection precision and recall; loop detection and runaway prevention; reasoning trace audits (did the agent arrive at the right answer via an unsafe or hallucinated shortcut?); tracking task latency, token consumption, and dollar cost per completed mission.
+- **Quiz seeds:** Why is final-answer accuracy alone insufficient for evaluating multi-step autonomous agents? What is a trajectory eval, and how do you score whether an agent's tool calls were optimal?
 
 #### P7-W5-L4 · Hands-on eval tooling (~75 min)
 - **Learn:** Evidently's free [LLM Evaluations for AI Builders](https://www.evidentlyai.com/llm-evaluations-course) (choose 2–3 code tutorials), or W&B's free "LLM apps: Evaluation" from [wandb.ai/site/courses](https://wandb.ai/site/courses/).
