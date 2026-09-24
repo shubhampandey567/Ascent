@@ -60,7 +60,7 @@ Lessons are `####` headings with an id and a title, separated by `·`:
 Work in a **fresh clone of this repository**, never in your personal learning copy (it contains your progress and notes). Then run:
 
 ```bash
-git clone https://github.com/shubhampandey567/Ascent.git
+git clone <upstream-repository-URL>
 cd Ascent
 python -m pip install -r requirements-dev.txt
 python -m pytest -q
