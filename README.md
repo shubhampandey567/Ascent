@@ -57,18 +57,24 @@ Why this design? Watching a video feels like learning, but most of it fades with
 ## Quick start
 
 ### 1. Make your own private copy
-Click **Use this template → Create a new repository** at the top of this page, and choose **Private**. Your copy will hold your progress, notes and projects, so it should be yours alone. (Forks of public repositories are public, so use the template button, not Fork.)
+Click **[Use this template → Create a new repository](https://github.com/shubhampandey567/Ascent/generate)** at the top of the repository page ([github.com/shubhampandey567/Ascent](https://github.com/shubhampandey567/Ascent)), and choose **Private**. Your copy will hold your progress, notes and projects, so it should be yours alone. (Forks of public repositories are public, so use the template button, not Fork.)
 
 ### 2. Get it onto your computer
-Install [Git](https://git-scm.com/downloads) and [Python 3.10 or newer](https://www.python.org/downloads/) (on Windows, tick "Add python.exe to PATH"). Then:
+Install [Git](https://git-scm.com/downloads) and [Python 3.10 or newer](https://www.python.org/downloads/) (on Windows, tick "Add python.exe to PATH"). Then clone your repository:
 
-```
-git clone <your new repository's URL>
-cd <repository folder>
+```bash
+# If you created a private copy from the template:
+git clone https://github.com/<your-username>/Ascent.git
+cd Ascent
+
+# Or to clone this repository directly:
+# git clone https://github.com/shubhampandey567/Ascent.git
+# cd Ascent
+
 python tools/tracker.py status
 ```
 
-If the last command prints "Not set up yet", everything works. (On Windows, if `python` opens the Microsoft Store, turn off the "python.exe" app execution alias in Settings, or use `py` instead.)
+If the last command prints "Not set up yet", everything works. (On Windows, if `python` opens the Microsoft Store or is not recognized, use `py` instead, or turn off the "python.exe" app execution alias in Settings.)
 
 ### 3. Choose your AI mentor
 
@@ -94,7 +100,7 @@ python tools/srs.py          schedules your reviews
 python tools/transcript.py   reads YouTube transcripts so quizzes match the video
 ```
 
-For video-grounded quizzes, install one package once: `pip install youtube-transcript-api`.
+For video-grounded quizzes, install one package once: `pip install youtube-transcript-api`. (For running unit tests or contributing, install dev dependencies with `pip install -r requirements-dev.txt`.)
 
 ### 5. Type `/start`
 Open your copy in your agent and type **`/start`** (or `start`). The mentor interviews you about your time, goals and computer, gives a 10-question placement check, helps you create the free accounts you'll need (GitHub, Google for Colab, Kaggle, Hugging Face, a free LLM API key), records your pace, and gives you your first lesson.
@@ -257,8 +263,8 @@ When the agent is back, it picks up from the tracker as if nothing happened.
 - **I'm behind schedule.** Normal. `/replan`. A lighter pace that you keep beats a fast one that you quit.
 - **Can I skip ahead?** Yes: test-outs let you pass lessons you already know. Each phase lists its prerequisites.
 - **Can I learn in my own language?** Tell the mentor during `/start`; it explains in your language, and lessons list regional-language alternates where contributors have added them.
-- **A link is dead.** Tell the mentor (it will find the resource on the creator's channel or use the alternate) and please [report it](../../issues/new/choose).
-- **How do I get course updates in my copy?** Template copies don't sync automatically. Occasionally copy updated `curriculum/`, `guides/`, `.agents/skills/` and `tools/` folders from this repository into yours (never overwrite your `tracker/`, `notes/` or `projects/`), then run `python scripts/sync_agents.py`.
+- **A link is dead.** Tell the mentor (it will find the resource on the creator's channel or use the alternate) and please [report it](https://github.com/shubhampandey567/Ascent/issues/new/choose).
+- **How do I get course updates in my copy?** Template copies don't sync automatically. Occasionally copy updated `curriculum/`, `guides/`, `.agents/skills/` and `tools/` folders from the upstream repository ([github.com/shubhampandey567/Ascent](https://github.com/shubhampandey567/Ascent)) into yours (never overwrite your `tracker/`, `notes/` or `projects/`), then run `python scripts/sync_agents.py`.
 
 ## Contributing
 Corrections, dead-link reports, better free resources (especially in other languages), lesson improvements and support for more AI agents are all very welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) and the [Code of Conduct](CODE_OF_CONDUCT.md). Please contribute from a fresh clone of this repository, not from your personal learning copy.

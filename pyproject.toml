@@ -5,5 +5,8 @@ description = "A free, agent-agnostic AI engineering course with an AI mentor, s
 requires-python = ">=3.10"
 license = { text = "Apache-2.0 (code) and CC-BY-SA-4.0 (content)" }
 
+[project.urls]
+Repository = "https://github.com/shubhampandey567/Ascent"
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
