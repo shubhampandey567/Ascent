@@ -1,0 +1,31 @@
+name: Lesson or curriculum feedback
+description: Something was confusing, missing, too hard, too easy, or in the wrong order.
+labels: ["curriculum"]
+body:
+  - type: input
+    id: lesson
+    attributes:
+      label: Lesson id or phase
+      placeholder: P2-W4-L2
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What kind of feedback
+      options:
+        - Confusing explanation or resource
+        - Missing prerequisite
+        - Too hard / too long for the time given
+        - Too easy
+        - Quiz seeds or build task could be better
+        - Project or exam spec problem
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Details and suggestion
+    validations:
+      required: true

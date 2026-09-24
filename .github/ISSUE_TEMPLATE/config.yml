@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Questions, study help and learner stories
+    url: https://docs.github.com/en/discussions
+    about: Use this repository's Discussions tab for questions and to share your progress (the maintainer enables Discussions in the repository settings).
+  - name: Report a security problem privately
+    url: https://docs.github.com/en/code-security/security-advisories/guidance-on-reporting-and-writing-information-about-vulnerabilities/privately-reporting-a-security-vulnerability
+    about: Please don't open public issues for security problems; see SECURITY.md.

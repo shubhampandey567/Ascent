@@ -1,0 +1,35 @@
+name: Broken link or outdated resource
+description: A link is dead, moved, now paid, or the content is out of date.
+labels: ["resources", "good first issue"]
+body:
+  - type: input
+    id: location
+    attributes:
+      label: Where
+      description: File and lesson id, for example curriculum/phase-3-math.md, P3-W2-L1
+    validations:
+      required: true
+  - type: input
+    id: link
+    attributes:
+      label: The link
+    validations:
+      required: true
+  - type: dropdown
+    id: problem
+    attributes:
+      label: What's wrong
+      options:
+        - Dead link (404, video removed)
+        - Moved to a new URL
+        - No longer free / now needs payment
+        - Content is outdated (old model, API or tool)
+        - The title or description doesn't match the link
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested replacement (optional)
+      description: An official, free link covering the same idea. Please open it yourself first.

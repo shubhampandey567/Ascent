@@ -1,0 +1,40 @@
+name: Suggest a free resource
+description: A better or additional free resource for a lesson, including resources in other languages.
+labels: ["resources"]
+body:
+  - type: input
+    id: lesson
+    attributes:
+      label: Lesson or topic
+      description: For example P5-W6-L1 (convolutions), or "a general statistics reference"
+    validations:
+      required: true
+  - type: input
+    id: link
+    attributes:
+      label: Link
+    validations:
+      required: true
+  - type: input
+    id: language
+    attributes:
+      label: Language of the resource
+      placeholder: English
+  - type: textarea
+    id: why
+    attributes:
+      label: Why it helps
+      description: What does it explain better than the current resource? How long is it?
+    validations:
+      required: true
+  - type: checkboxes
+    id: rules
+    attributes:
+      label: Checks
+      options:
+        - label: It is free to use (anything paid, like a certificate, is mentioned above)
+          required: true
+        - label: It is the creator's official source, not a re-upload or mirror
+          required: true
+        - label: I opened it myself; it is not an AI-generated suggestion I haven't checked
+          required: true

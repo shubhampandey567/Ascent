@@ -1,0 +1,29 @@
+name: AI agent problem or new agent support
+description: The Mentor doesn't work well in an AI agent, or you'd like support for another agent.
+labels: ["agents"]
+body:
+  - type: input
+    id: agent
+    attributes:
+      label: Agent and version
+      placeholder: Google Antigravity 2.17 / Claude Code 2.1.x / Copilot in VS Code / Cursor / Codex / ...
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: Operating system
+      placeholder: Windows 11 / macOS 15 / Ubuntu 24.04
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: Which command (for example /today), what the agent did, and what you expected.
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant output (optional)
+      description: Remove API keys and personal data first.
+      render: text

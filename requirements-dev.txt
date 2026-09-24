@@ -1,0 +1,2 @@
+# Only needed to run the tests. The course tools themselves use the standard library only.
+pytest>=8
