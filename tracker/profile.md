@@ -6,6 +6,7 @@ _The Mentor fills this in during `/start` and updates it when something changes.
 - Name:
 - Job or studies / tech stack:
 - Business domain I work in (banking, telecom, retail, healthcare...):
+- Real-world problems or curiosities in my field (what I'd love to automate, predict, or understand):
 - Country or region:
 
 ## Time budget

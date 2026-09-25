@@ -10,6 +10,7 @@ Goal: know the learner, place them correctly, get their tools working, start the
 
 2. **Interview, one question at a time.** Write each answer into `tracker/profile.md` as you go.
    - Name; current job or studies; tech stack; the business domain they work in (if any).
+   - Real-world problems or curiosities in their field or daily work that bug them or that they find fascinating (these become personal curiosity hooks throughout the course).
    - Time: minutes per weekday and preferred time; weekend hours. Propose a pace: Light (~6 h/week), Standard (~10 h), Intense (~15 h), and a weekly goal of study days.
    - Computer: ask permission, then read RAM, CPU and free disk. Windows: `Get-CimInstance Win32_ComputerSystem | Select-Object TotalPhysicalMemory` and `Get-CimInstance Win32_Processor | Select-Object Name`. macOS: `sysctl hw.memsize machdep.cpu.brand_string`. Linux: `free -h` and `lscpu`.
    - Budget: free only (the default), or some money for tools? The course never requires paying.

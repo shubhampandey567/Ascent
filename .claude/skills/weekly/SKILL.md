@@ -16,10 +16,11 @@ description: Sunday weekly retrospective for the AI learning path — a 10-quest
 
 6. **Build checkpoint.** Where is the weekend build or the phase project? If it's ready, suggest `/submit`.
 
-7. **Your analysis (at most 10 lines),** using the dashboard's numbers:
+7. **Your analysis (at most 12 lines),** using the dashboard's numbers:
    - Pace vs plan (the tracker's "on track / ahead / behind").
+   - **Strengths:** name their top 2 strengths demonstrated this week (e.g. clean code, high quiz retention, fast grasp of concepts).
+   - **Where to learn more:** their top 2–3 open weak spots or concepts that need reinforcement.
    - Trends: first-quiz average, review retention, study days vs goal, energy.
-   - The top 3 weak spots.
    - What changes next week: lighter or heavier, alternate resources, more practice, or `/replan`.
    - One career move: push work to GitHub, write a post, or discuss an AI use case with a colleague.
 

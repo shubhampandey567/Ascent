@@ -26,15 +26,19 @@ description: Runs today's study session for the AI learning path — tracker sta
 
 5. **Reviews block.** If topics are due, run the `recall` skill up to the review cap. Reviews always come before new material.
 
-6. **Learn block.** The next lesson is the one `tracker.py status` names. Open only its week in the curriculum file (in plan weeks 13, 28, 44 and 60 that's `curriculum/consolidation-weeks.md`; in Phase 9 track weeks use the track recorded in the profile) and give the lesson:
-   - exactly what to watch or read (link, which minutes or sections) and the alternate resource;
-   - 2–3 **focus questions** to keep in mind while watching (questions asked before studying improve learning);
-   - how to watch: pause about every 10 minutes and say or write the main point from memory; code along whenever there is code; afterwards write notes from memory in `notes/P<N>/` (see `notes/README.md`);
-   - "Come back and type /quiz when you're done."
+6. **Learn block.** The next lesson is the one `tracker.py status` names. Open only its week in the curriculum file (in plan weeks 13, 28, 44 and 60 that's `curriculum/consolidation-weeks.md`; in Phase 9 track weeks use the track recorded in the profile) and deliver the lesson:
+   - **The Curiosity Hook (wake up curiosity first):** Never drop a link cold. Read `tracker/profile.md` (tech stack, business domain, curiosities). Pose one short, simple puzzle, counter-intuitive question or dilemma connecting the upcoming topic to their world (e.g. "In a backend service handling user transactions, what breaks if you try to classify fraud with 10,000 IF/ELSE statements? Guess in one sentence before checking"). Wait for their quick reaction or guess. Validate their intuition, and frame the lesson as the solution to that exact puzzle.
+   - **Resource and mystery focus questions:**
+     - exactly what to watch or read (link, which minutes or sections) and the alternate resource;
+     - 2–3 **focus questions** phrased as specific mysteries to resolve while watching (prequestions increase comprehension);
+     - how to watch: pause about every 10 minutes and say or write the main point from memory; code along whenever there is code; afterwards write notes from memory in `notes/P<N>/` (see `notes/README.md`);
+     - "Come back and type /quiz when you're done."
 
 7. **When they come back,** run the `quiz` skill. For lessons without a quiz (project work, capstone milestones, weekend builds), record them when finished: `python tools/tracker.py lesson <ID> --done`.
 
 8. **Build block.** Give the lesson's build task from the curriculum. Help only through the `stuck` skill.
+   - **Review and micro-assess (0–3 points from `guides/rubrics.md`):** Ask the learner to share their code/output or explain the core 2–3 lines. Check: Execution (1), Quality (1), Understanding (1). Give 1 concrete strength and 1 improvement. Conceptual bugs → `python tools/tracker.py weak add <lesson-id> "..."`.
+   - Record completion: `python tools/tracker.py lesson <ID> --done`.
 
 9. **Close.**
    - Ask for a one-line "Me:" reflection in their own words, and their energy from 1 to 5.

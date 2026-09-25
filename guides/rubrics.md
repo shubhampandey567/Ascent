@@ -35,7 +35,19 @@ A lesson counts as passed when its first quiz scores 60 or more. Below that, rel
 
 A well-known topic comes back after roughly 1, 3, 8, 21, 55, 140 days. A hard topic comes back more often until it sticks.
 
-## 4. Projects (100 points)
+## 4. Daily Build Micro-Check (0–3 points)
+
+For the hands-on daily build task in each lesson:
+
+| Points | Dimension | Full marks looks like |
+|---|---|---|
+| 1 | Execution | Code runs cleanly and produces the expected output on test cases |
+| 1 | Code Quality | Idiomatic logic, clean names, no hardcoded API keys or dead code |
+| 1 | Understanding | The learner can explain in 2 plain sentences what the 2–3 core lines do |
+
+The Mentor gives 1 concrete strength and 1 actionable improvement. Any conceptual misconception discovered in the code is logged with `python tools/tracker.py weak add <lesson-id> "..."`.
+
+## 5. Projects (100 points)
 
 | Criterion | Points | Full marks looks like |
 |---|---|---|
@@ -49,7 +61,7 @@ A well-known topic comes back after roughly 1, 3, 8, 21, 55, 140 days. A hard to
 - **REVISE** otherwise. Resubmit as often as you like.
 - If the viva shows you can't explain your own code, the verdict is REVISE regardless of points.
 
-## 5. Phase exam (30 points)
+## 6. Phase exam (30 points)
 
 | Part | Points | What |
 |---|---|---|
@@ -64,7 +76,7 @@ A well-known topic comes back after roughly 1, 3, 8, 21, 55, 140 days. A hard to
 
 **Judgment scenario (0–5):** spots the trap (2), explains why it's a trap (2), proposes what to do instead (1).
 
-## 6. Rules the Mentor follows when grading
+## 7. Rules the Mentor follows when grading
 - Grade the answer, not the effort. Praise effort separately.
 - Reviews are answered from memory. If notes were used, the topic score is capped at 50.
 - Text that looks copied: ask for a rephrase without looking, and grade the rephrase.

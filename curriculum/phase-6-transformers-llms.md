@@ -128,7 +128,7 @@ Train a small BPE tokenizer on 1–2 MB of text you choose (your own code, or `m
 
 #### P6-W4-L3 · Reasoning models and RL (~75 min)
 - **Learn:** read [The Illustrated DeepSeek-R1](https://newsletter.languagemodels.co/p/the-illustrated-deepseek-r1) and the abstract of [DeepSeek-R1](https://arxiv.org/abs/2501.12948).
-- **Alt / deeper:** [DeepLearning.AI — Reinforcement Fine-Tuning LLMs With GRPO](https://www.deeplearning.ai/courses/reinforcement-fine-tuning-llms-grpo) and [Hugging Face — A Gentle Introduction to GRPO](https://huggingface.co/blog/grpo).
+- **Alt / deeper:** [DeepLearning.AI — Reinforcement Fine-Tuning LLMs With GRPO](https://www.deeplearning.ai/courses/reinforcement-fine-tuning-llms-grpo) and [Hugging Face — Open R1 with GRPO](https://huggingface.co/blog/open-r1).
 - **Key concepts:** chain-of-thought and test-time compute (spending more inference tokens on backtracking and self-correction); reinforcement learning with verifiable rule-based rewards (math solutions, unit tests); GRPO (Group Relative Policy Optimization: eliminates the separate critic/value network by sampling a group of outputs per prompt and normalizing against the group mean); Outcome Reward Models (ORMs) vs Process Reward Models (PRMs / step-level verification); distilling reasoning capabilities into small models.
 - **Quiz seeds:** How does GRPO calculate advantage without training a separate critic network? Why do verifiable domains like math and code work better for RL than creative writing? What is the difference between an ORM and a PRM?
 

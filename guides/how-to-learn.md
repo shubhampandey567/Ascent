@@ -29,8 +29,13 @@ Spaced practice reliably beats cramming, and the best gap between reviews grows 
 - Short quizzes during an online lecture cut mind-wandering roughly in half and raised final test scores from 68% to 90% in one study.
 - Questions asked *before* watching improve learning of exactly what they ask about.
 
+### Curiosity before content (the information-gap effect)
+When someone explains an answer to a question you never asked, your brain discards it as background noise. But when you face an intuitive puzzle or dilemma *first*—especially one connected to your job or tech stack—your brain creates an open loop (an "information gap", Loewenstein 1994). That open loop triggers dopamine, raises alertness, and turns passive watching into an active search for the missing piece.
+
+That is why your AI Mentor will always ask you a quick question, teaser, or puzzle connecting the topic to your world *before* sending you off to watch or read. Take 15 seconds to guess! Even a completely wrong guess primes your neural pathways to absorb the true explanation when you encounter it.
+
 **How to watch every video in this course:**
-1. Read the 2–3 **focus questions** the Mentor gives you before you press play. Guess the answers.
+1. Engage with the **Curiosity Hook** and read the 2–3 **focus questions** the Mentor gives you before you press play. Guess the answers.
 2. Watch in chunks of about **5–10 minutes**. At each natural break, pause and write 2–3 bullet points **from memory** before continuing. Don't rewind before you've tried to recall.
 3. Speed 1.25–1.75× is fine (research shows little loss up to 2×). Spend the saved time on recall, not on re-watching.
 4. Code along whenever there's code. Typing it yourself beats watching it.
@@ -104,6 +109,7 @@ Before answering a quiz question, you can say how sure you are (1–5). Errors y
 - Carpenter et al. (2013), the fluent-lecturer illusion — [PubMed](https://pubmed.ncbi.nlm.nih.gov/23645413/)
 - Szpunar, Khan & Schacter (2013), quizzes inside online lectures — [PNAS](https://www.pnas.org/doi/10.1073/pnas.1221764110)
 - King-Shepard et al. (2025), prequestions meta-analysis — [Educational Psychology Review](https://link.springer.com/article/10.1007/s10648-025-10075-7)
+- Loewenstein (1994), "The psychology of curiosity: A review and reinterpretation" — [Psychological Bulletin](https://doi.org/10.1037/0033-2909.116.1.75)
 - Murphy et al. (2022), video playback speed — [Applied Cognitive Psychology](https://onlinelibrary.wiley.com/doi/abs/10.1002/acp.3899)
 - Flanigan et al. (2024), handwritten vs typed notes meta-analysis — [Educational Psychology Review](https://link.springer.com/article/10.1007/s10648-024-09914-w)
 - Bastani et al. (2025), "Generative AI without guardrails can harm learning" — [PNAS (PMC)](https://pmc.ncbi.nlm.nih.gov/articles/PMC12232635/)
